@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.LinkedList;
+import java.util.LinkedHashSet;
 
 public class TrainConsistManagementApp {
 
@@ -16,6 +17,9 @@ public class TrainConsistManagementApp {
 
     // UC4
     static LinkedList<String> trainConsist = new LinkedList<>();
+
+    // UC5
+    static LinkedHashSet<String> trainFormation = new LinkedHashSet<>();
 
     public static void main(String[] args) {
 
@@ -40,6 +44,10 @@ public class TrainConsistManagementApp {
         // ---------------- UC4 ----------------
         manageTrainConsist();
         displayTrainConsist();
+
+        // ---------------- UC5 ----------------
+        manageTrainFormation();
+        displayTrainFormation();
     }
 
     // ================= UC1 =================
@@ -79,7 +87,7 @@ public class TrainConsistManagementApp {
         bogieIds.add("B3");
         bogieIds.add("B1"); // duplicate ignored
 
-        System.out.println("\nBogie IDs after adding (duplicates ignored): " + bogieIds);
+        System.out.println("\nBogie IDs (duplicates ignored): " + bogieIds);
     }
 
     public static void displayBogieIds() {
@@ -111,5 +119,23 @@ public class TrainConsistManagementApp {
 
     public static void displayTrainConsist() {
         System.out.println("Final Train Consist: " + trainConsist);
+    }
+
+    // ================= UC5 =================
+    public static void manageTrainFormation() {
+
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
+
+        // Duplicate attempt
+        trainFormation.add("Sleeper");
+
+        System.out.println("\nTrain Formation (order preserved, duplicates ignored): " + trainFormation);
+    }
+
+    public static void displayTrainFormation() {
+        System.out.println("Final Train Formation: " + trainFormation);
     }
 }
